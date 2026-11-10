@@ -18,12 +18,17 @@ public class Message implements Serializable {
     private MessageStatus status;
 
     public Message(long id, long senderId, long receiverId, String content) {
+        this(id, senderId, receiverId, content, LocalDateTime.now(), MessageStatus.SENT);
+    }
+
+    public Message(long id, long senderId, long receiverId, String content,
+                   LocalDateTime sentAt, MessageStatus status) {
         this.id = id;
         this.senderId = senderId;
         this.receiverId = receiverId;
         this.content = content;
-        this.sentAt = LocalDateTime.now();
-        this.status = MessageStatus.SENT;
+        this.sentAt = sentAt;
+        this.status = status;
     }
 
     public long getId() { return id; }
